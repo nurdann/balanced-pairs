@@ -28,8 +28,10 @@ int main(int argc, char* argv[]) {
   std::map<char, char> enclosingPairs;
   enclosingPairs['('] = ')'; // default pairs
   
-  for(std::string::iterator it = pairs.begin(); it < pairs.end(); it++) {
-	enclosingPairs[*it] = *(++it);
+  for(std::string::iterator it = pairs.begin(); it < pairs.end(); ++it) {
+	char first = *it;
+	char second = *(++it);
+	enclosingPairs[first] = second;
   }
   
   std::cout << isBalanced(input, enclosingPairs) << std::endl;
